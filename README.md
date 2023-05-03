@@ -2,7 +2,8 @@
 
 ## OS
 
-Buddy Algorithm
+1. [Theory Assignment](https://github.com/kasv-p/CS314-OS-Lab/tree/main/Theory-Assignment) <br>
+This assignment includes implementation of buddy algorithm.
 
 ## OS-Lab
 
