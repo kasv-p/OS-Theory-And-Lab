@@ -24,6 +24,7 @@ void initialize_buddy_free_list(vector<vector<pair<int, int>>> &buddy_free_list,
 void allocate(vector<vector<pair<int, int>>> &buddy_free_list, unordered_map<string, vector<vector<int>>> &process_allocation_mapping, unordered_map<int, int> &global_mapping, string process_name, int req_memory)
 {
     int index = ceil(log(req_memory) / log(2));
+    
     if (index < min_power)
     {
         index = min_power;
@@ -79,24 +80,17 @@ void deallocate(vector<vector<pair<int, int>>> &buddy_free_list, unordered_map<s
 {
 
     int real_index = log(global_mapping[start_address]) / log(2);
-
     int index = real_index - min_power;
-
     int block_size = global_mapping[start_address];
-
     buddy_free_list[index].push_back(make_pair(start_address, start_address + block_size - 1));
-
     int block_number = start_address / block_size;
-
     int break_flag = 0;
 
     while (index < number_of_diff_sizes)
     {
-
         int adj_address = block_number % 2 ? start_address - block_size : start_address + block_size;
         for (int i = 0; i < buddy_free_list[index].size(); i++)
         {
-
             if (buddy_free_list[index][i].first != adj_address)
             {
                 break_flag = 0;
@@ -134,6 +128,7 @@ void deallocate(vector<vector<pair<int, int>>> &buddy_free_list, unordered_map<s
     {
         sort(vec.begin(), vec.end(), sort_cmp);
     }
+    
 }
 
 int main(int argc, char *argv[])
@@ -149,7 +144,7 @@ int main(int argc, char *argv[])
         if (newline != "")
         {
             getline(input_file, newline);
-                }
+        }
 
         input_file >> max_power >> min_power;
 
@@ -176,9 +171,9 @@ int main(int argc, char *argv[])
 
             if (newline == "")
             {
-
                 break;
             }
+            
             istringstream ss_line(newline);
             ss_line >> process_name;
             ss_line >> req_memory;
@@ -200,19 +195,18 @@ int main(int argc, char *argv[])
             }
             if (input_file.eof())
             {
-
                 break;
             }
         }
 
         for (int i = 0; i < buddy_free_list.size(); i++)
         {
-
             for (int j = 0; j < buddy_free_list[i].size(); j++)
             {
                 to_print_list[buddy_free_list[i][j].first] = {"FREE", buddy_free_list[i][j].second - buddy_free_list[i][j].first + 1};
             }
         }
+        
         for (const auto &pair : process_allocation_mapping)
         {
             vector<vector<int>> vec = pair.second;
@@ -224,7 +218,6 @@ int main(int argc, char *argv[])
         }
         for (const auto &pair : to_print_list)
         {
-
             if (pair.second.first == "FREE")
             {
                 cout << "Free Block: ";
@@ -234,13 +227,11 @@ int main(int argc, char *argv[])
                 cout << pair.second.first << ": ";
             }
             cout << pair.second.second;
-
             cout << endl;
         }
-
+        
         if (input_file.eof())
         {
-
             break;
         }
         else
