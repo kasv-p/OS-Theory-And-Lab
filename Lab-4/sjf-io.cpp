@@ -127,10 +127,6 @@ int main(int argc, char **argv)
 
       if (cpu_running[1] <= current_time)
       {
-        // cout << cpu_running[0] + 1 << " "
-        //      << "exited"
-        //      << " current time " << current_time
-        //      << "\n";
         if (response_time.find(cpu_running[0]) == response_time.end())
         {
           response_time[cpu_running[0]] = current_time - input_array[cpu_running[0]][0];
