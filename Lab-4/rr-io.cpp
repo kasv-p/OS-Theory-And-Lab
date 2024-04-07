@@ -222,7 +222,6 @@ int main(int argc, char **argv)
         int comepletionTime = exit_timing[i];
         int arrivalTime = input_array[i][0];
         int cpuBurst = burst_times[i];
-        // cout << cpuBurst << endl;
         int waitingTime = turnAroundTime - cpuBurst;
         int totalBurstTime = sumBurstTime(input_array[i]);
         float penaltyRatio = (turnAroundTime)*1.0 / (cpuBurst);
