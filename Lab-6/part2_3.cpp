@@ -124,7 +124,6 @@ int main(int argc, char **argv)
 
     else if (pid > 0)
     {
-        // wait(NULL);
         THRESHOLDING(data, dimensions);
         auto const end = std::chrono::system_clock::now();
         auto duration = duration_cast<microseconds>(end - start);
